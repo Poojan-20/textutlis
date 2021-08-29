@@ -1,30 +1,14 @@
 import React, {useState}from 'react'
 
-export default function About() {
+export default function About(props) {
 
-    const [myStyle,setStyle] = useState({
-        color:'black',
-        backgroundColor:'white'
-    })
-    const [btnText, setbtnText] = useState("Enable Dark Mode")
-
-     let toggledark =()=>{
-        if(myStyle.color ==='black'){
-            setStyle({
-                color:'white',
-                backgroundColor:'black'
-            })
-            setbtnText("Enable Light mode")
-        }
-        else{
-            setStyle({
-                color:'black',
-                backgroundColor:'white',
-                border: '1px solid white'
-            })
-            setbtnText("Enable Dark Mode")
-        }
-
+    // const [myStyle,setStyle] = useState({
+    //     color:'black',
+    //     backgroundColor:'white'
+    // })
+    let myStyle ={
+        color: props.mode === 'dark'?'white':'#2e353e',
+        backgroundColor: props.mode ==='dark'?'#2e353e':'white',
     }
     return (
         <div className="container" style={myStyle}>
@@ -66,10 +50,6 @@ export default function About() {
                 </div>
                 </div>
             </div>
-            </div>
-            <div className="container">
-                <button className="btn btn-primary my-3" type="button"
-                onClick={toggledark}>{btnText}</button>
             </div>
         </div>
     )

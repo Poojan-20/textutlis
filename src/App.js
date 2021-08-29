@@ -20,7 +20,18 @@ function App() {
     }, 2000);
   };
 
-  const togglemode = () => {
+  const bodyremoveclass =()=>{
+    document.body.classList.remove('bg-light')
+    document.body.classList.remove('bg-dark')
+    document.body.classList.remove('bg-success')
+    document.body.classList.remove('bg-warning')
+    document.body.classList.remove('bg-danger')
+    document.body.classList.remove('bg-primary')
+  }
+
+  const togglemode = (cls) => {
+    bodyremoveclass();
+    document.body.classList.add('bg-'+cls)
     if (mode === "dark") {
       setmode("light");
       document.body.style.backgroundColor = "white";
@@ -40,7 +51,7 @@ function App() {
       <div className="container my-5">
         <Switch>
           <Route exact path="/about">
-            <About />
+            <About mode={mode} />
           </Route>
           <Route exact path="/">
             <Textform
